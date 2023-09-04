@@ -1,0 +1,143 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Book Lists</h1>
+  <div class="table-responsive">
+    {% if data %}
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Book Name</th>
+          <th scope="col">Author Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">First Publication</th>
+          <th scope="col">Last Publication</th>
+          <th scope="col">Book Cover</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr>
+          <th scope="row">{{i.id}}</th>
+          <td>{{i.book_name}}</td>
+          <td>{{i.author}}</td>
+          <td>{{i.category}}</td>
+          <td>{{i.first_pub}}</td>
+          <td>{{i.last_pub}}</td>
+
+          <td>
+            {% if i.cover_image %}
+            <img
+              src="{{ i.cover_image.url }}"
+              alt="{{ i.book_name }} Cover"
+              class="img-fluid"
+              style="max-width: 100px"
+            />
+            {% else %}
+            <span class="text-muted">No Image</span>
+            {% endif %}
+          </td>
+          <td>
+            <a
+              href="{% url 'editbook' id=i.id %}"
+              class="btn btn-warning btn-sm"
+              >Edit</a
+            >
+            <a
+              href="{% url 'deletebook' id=i.id %}"
+              class="btn btn-danger btn-sm"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <h1>-------No Data Available-------</h1>
+    {% endif %}
+
+  </div>
+</div>
+
+<style>
+  body {
+    font-family: "Montserrat", sans-serif;
+    background-image: url("http://cds1.discoveryftp.net/Movies/English/2005/Harry%20Potter%20and%20the%20Goblet%20of%20Fire/fanart.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #561172;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .table th,
+  .table td {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .table thead th {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  .table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+  .table tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+
+  .cover-image {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+
+  .cta-button:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+{% endblock %}

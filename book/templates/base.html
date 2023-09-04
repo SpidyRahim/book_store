@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Store</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <style>
+      .navbar {
+        background-color: #17b9a4; /* Change the background color to your preference */
+        padding: 10px 0; /* Add some vertical padding */
+      }
+
+      .navbar-brand {
+        color: #fff; /* Text color for the brand */
+        font-size: 24px; /* Adjust the font size */
+      }
+
+      .navbar-toggler-icon {
+        background-color: #fff; /* Color of the toggler icon */
+      }
+
+      .nav-link {
+        color: #fff !important; /* Text color for the links */
+        margin-right: 15px; /* Add some spacing between the links */
+        transition: 0.3s; /* Smooth hover transition */
+      }
+
+      .nav-link:hover {
+        color: #ff1500 !important; /* Change color on hover */
+      }
+
+      /* Active link style */
+      .nav-link.active {
+        font-weight: bold; /* Add bold style to the active link */
+        color: #ff6f61 !important; /* Active link color */
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Book Store</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="{% url 'storebook' %}">Store Book</a>
+            <a class="nav-link" href="{% url 'showbook' %}">Show Books</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
